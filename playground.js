@@ -21,8 +21,19 @@ function whatIsInAName(collection, source) {
         // if collection array i key matches the source key
         // match key's, if so add to source data
         if (collection[i].hasOwnProperty(Object.keys(source)[j])) {
-          // console.log('if statement')
-          sourceData++;
+
+
+          // This is the value on the 'collection' side 
+          // console.log(collection[i][Object.keys(source)[j]])
+          
+          // this is the value on the source side
+          // console.log(source[Object.keys(source)[j]]);
+
+          // Last check, if all keys AND values match, then send signal for match
+          if (collection[i][Object.keys(source)[j]] === source[Object.keys(source)[j]]) {
+
+            sourceData++;
+          }
 
         }
 
@@ -42,8 +53,16 @@ function whatIsInAName(collection, source) {
         // if collection array i key matches the source key
         // match key's, if so add to source data
         if (collection[i].hasOwnProperty(Object.keys(source)[0])) {
+
+
+          // Last check, if all keys AND values match, then send signal for match
+          if (collection[i][Object.keys(source)[0]] === source[Object.keys(source)[0]]) {
+
           console.log('if statement')
-          arr.push(collection[i]);
+            arr.push(collection[i]);
+            // sourceData++;
+          }
+
 
         }
 
@@ -69,4 +88,4 @@ function whatIsInAName(collection, source) {
 
 whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });
 
-// whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { "first": 1, "last": 2 });
+// whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { "first": "Romeo", "last": "Montague" });
