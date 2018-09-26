@@ -1,50 +1,56 @@
-function destroyer(arr) {
-  // console.log(arguments[1]);
-    // create data variable to store indexes of variables that need to be removed
-    let deleteMe = [];
-  
-    // loop through the array as many times as there are more than one arguments sent to this function
-    for (let i = 1; i < arguments.length; i++) {
-      // console.log(arguments[i]);
-      // console.log(i);
-  
-      // loop through entire array and find matches of the argument[i] variable
-      // I feel like this was a cheap fix, i want to be able to go back and just do it differnet like this. 
-      // copy the array first of all, run the loops off the object that is not being changed, not when it is being changed. 
-      // if you run a loop on an array that is being changed, you run the risk of an off by one error.
-      for (let j = 0; j <= arr.length; j ++){
-        // using indexOf method, find indexes of provided array that match the additional arguments
-      if (arr.indexOf(arguments[i]) >= 0) {
-        // console.log(arguments[i]);
-        arr.splice(arr.indexOf(arguments[i]), 1);
-        // when a match is found, add the index to the data variable
-        // deleteMe.push(arr.indexOf(arguments[i]));
-      }
-      }
-      
-   
+function whatIsInAName(collection, source) {
+  // What's in a name?
+  var arr = [];
+  // Only change code below this line
+  // console.log(Object.keys(collection[1]));
+  // console.log(collection[0].hasOwnProperty('last'));
+
+  for (let i = 0; i < collection.length; i++) {
+    console.log('i')
+    // If the source object has multiple keys, we'll need data to check if all of the variables have matches
+    let sourceData = 0;
+
+    // if source has multiple objects, multiple matches are required.
+    if (Object.keys(source).length > 1) {
+      console.log('greater than 0');
+
     }
-      console.log (arr);
-  
-    // once all filtering is finished, sort data variable from highest to lowest
-    // will this sorting be necessary? yes
-    // function sortNumber(a,b) {
-    //   return b - a;
-    // }
-  
-    // deleteMe = deleteMe.sort(sortNumber);
-  
-    // console.log (deleteMe);
-    // console.log(arr)
-    // console.log(deleteMe)
-    
-    // loop through data array and remove each index of the array
-    // for (let i = 0; i < deleteMe.length; i++) {
-    //   arr.splice(deleteMe[i], 1);
-    // }
-    // console.log(arr)
-    // Return cleansed array //
-    return arr;
+
+    // Loop through as many objects are in the source argument
+    for (let j = 0; j < Object.keys(source).length; j++) {
+      console.log('test')
+
+
+
+
+      // if collection array i key matches the source key
+      if (collection[i].hasOwnProperty(Object.keys(source)[j])) {
+        
+        // Now that we have matching keys, do we have matching values?
+
+      }
+
+    }  
+
+
+
+    // else only one match is required to add to data array
+
+
   }
   
-  destroyer([2, 3, 2, 3], 2, 3);
+  
+  // how ot catch multiple objects in source argument
+  // this returns an array of the object keys
+  console.log(Object.keys(source).length);
+
+
+
+
+  // Only change code above this line
+  return arr;
+}
+
+// whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });
+
+// whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { "apple": 1, "bat": 2 });
