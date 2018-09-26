@@ -6,43 +6,59 @@ function whatIsInAName(collection, source) {
   // console.log(collection[0].hasOwnProperty('last'));
 
   for (let i = 0; i < collection.length; i++) {
-    console.log('i')
-    // If the source object has multiple keys, we'll need data to check if all of the variables have matches
-    let sourceData = 0;
+    
 
-    // if source has multiple objects, multiple matches are required.
+    // ### if source has multiple objects, multiple matches are required.
     if (Object.keys(source).length > 1) {
-      console.log('greater than 0');
+      // If the source object has multiple keys, we'll need data to check if all of the variables have matches
+      let sourceData = 0;
+      // console.log('greater than 0');
 
-    }
+      // Loop through as many objects are in the source argument
+      for (let j = 0; j < Object.keys(source).length; j++) {
+        // console.log('test')
 
-    // Loop through as many objects are in the source argument
-    for (let j = 0; j < Object.keys(source).length; j++) {
-      console.log('test')
+        // if collection array i key matches the source key
+        // match key's, if so add to source data
+        if (collection[i].hasOwnProperty(Object.keys(source)[j])) {
+          // console.log('if statement')
+          sourceData++;
+
+        }
 
 
+      }  
 
+      // if source data === source object key length, then there is a match in the object
+      if (sourceData === Object.keys(source).length) {
+        arr.push(collection[i]);
+        // console.log('test')
+      }
 
-      // if collection array i key matches the source key
-      if (collection[i].hasOwnProperty(Object.keys(source)[j])) {
-        
-        // Now that we have matching keys, do we have matching values?
+      
+    } 
+      else {
+        // else only one match is required to add to data array
+        // if collection array i key matches the source key
+        // match key's, if so add to source data
+        if (collection[i].hasOwnProperty(Object.keys(source)[0])) {
+          console.log('if statement')
+          arr.push(collection[i]);
+
+        }
 
       }
 
-    }  
 
 
-
-    // else only one match is required to add to data array
 
 
   }
   
-  
+  console.log(arr)
   // how ot catch multiple objects in source argument
   // this returns an array of the object keys
-  console.log(Object.keys(source).length);
+  // console.log(Object.keys(source).length);
 
 
 
@@ -51,6 +67,6 @@ function whatIsInAName(collection, source) {
   return arr;
 }
 
-// whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });
+whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });
 
-// whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { "apple": 1, "bat": 2 });
+// whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { "first": 1, "last": 2 });
