@@ -10,4 +10,8 @@ spinalCase('This Is Spinal Tap');
 
 // [\W|\s|_]
 
+// [A-Z][a-z]*[^A-Z]
+
+// [a-z]*
+
 // change things to lower case, then filter from regex
